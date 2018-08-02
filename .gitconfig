@@ -1,0 +1,9 @@
+[alias]
+	cm = commit -m
+	c = checkout
+	b = branch
+	st = status
+	sdiff = diff --cached
+	current = rev-parse --abbrev-ref HEAD
+	pushcurrent = !git push origin `git current`
+	pullcurrent = !git pull origin `git current`
