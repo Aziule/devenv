@@ -45,6 +45,8 @@ alias sdcrebuildd="sdcd && sdcb && sdcupd --remove-orphans"
 alias phpx='php -dzend_extension=xdebug.so -dxdebug.remote_autostart=on -dxdebug.remote_enable=1 -dxdebug.remote_connect_back=1'
 alias gt='git log --graph --abbrev-commit --decorate --format=format:'\''%C(dim white)%h%C(reset) %C(dim white)%aD%C(reset) %C(yellow)%d%C(reset)%n        %C(white)%s%C(reset) %C(green)%an%C(reset)'\'' --all'
 alias glup="gulp"
+alias gi="grep -i"
+alias gs="gb | gi"
 
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
