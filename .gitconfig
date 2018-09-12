@@ -4,6 +4,7 @@
 	b = branch
 	st = status
 	sdiff = diff --cached
+	fdiff = diff --name-only
 	current = rev-parse --abbrev-ref HEAD
 	pushcurrent = !git push origin `git current`
 	pullcurrent = !git pull origin `git current`
