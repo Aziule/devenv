@@ -8,3 +8,5 @@
 	current = rev-parse --abbrev-ref HEAD
 	pushcurrent = !git push origin `git current`
 	pullcurrent = !git pull origin `git current`
+[core]
+        excludesfile = /Users/williamclaude/.gitignore_global
