@@ -44,12 +44,14 @@ alias dcb="docker-compose build"
 alias dcrebuild="dcd && dcb && dcup --remove-orphans"
 alias dcrebuildd="dcd && dcb && dcupd --remove-orphans"
 alias phpx='php -dzend_extension=xdebug.so -dxdebug.remote_autostart=on -dxdebug.remote_enable=1 -dxdebug.remote_connect_back=1'
-alias gocover='go tool cover -html=coverage.out'
 alias gotest='go test ./... -race -count=1 -failfast'
-alias gotestc='gotest -coverprofile=coverage.out'
-alias gotestv='gotest -v'
 alias gotesti='gotest -tags=integration'
+alias gotestv='gotest -v'
 alias gotestiv='gotesti -v'
+alias gotestc='gotest -coverprofile=coverage.out'
+alias gotestic='gotesti -coverprofile=coverage.out'
+alias gocover='gotestc && go tool cover -html=coverage.out && rm coverage.out'
+alias gocoveri='gotestic && go tool cover -html=coverage.out && rm coverage.out'
 alias gt='git log --graph --abbrev-commit --decorate --format=format:'\''%C(dim white)%h%C(reset) %C(dim white)%aD%C(reset) %C(yellow)%d%C(reset)%n        %C(white)%s%C(reset) %C(green)%an%C(reset)'\'' --all'
 alias gl="git log --pretty=format:'%ad %C(Yellow)%s%Creset (%-an)' --date=format:'%d/%m/%Y %H:%m'"
 alias glup="gulp"
