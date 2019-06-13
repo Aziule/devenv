@@ -1,14 +1,24 @@
-parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+[[ -s "$HOME/.bashrc_secure" ]] && source "$HOME/.bashrc_secure"
+
+function parse_git_branch() {
+	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
-dssh() {
-    docker exec -ti $1 bash
+if [ -f ~/.git-completion.bash ]; then
+	. ~/.git-completion.bash
+fi
+
+function dssh() {
+	docker exec -ti $1 bash
 }
 
-export PS1="\u \[\033[36m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
-export CLICOLOR=1
-export LSCOLORS=GxFxCxDxBxegedabagaced
+function dlogs() {
+	docker logs -f $1
+}
+
+function dstats() {
+	docker stats --format "table {{.Name}}\t{{.Container}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.NetIO}}\t{{.BlockIO}}"
+}
 
 alias s="sudo"
 alias ga="git add"
@@ -35,6 +45,7 @@ alias w="cd ~/work"
 alias www="cd /var/www"
 alias l="ls -lah"
 alias ll="ls -lah"
+alias r="tput reset"
 alias s="sudo"
 alias dcup="docker-compose up"
 alias dcupd="docker-compose up -d"
@@ -58,21 +69,9 @@ alias glup="gulp"
 alias gi="grep -i"
 alias gs="gb | gi"
 
-function dlogs() {
-  docker logs -f $1
-}
-
-function dstats() {
-  docker stats --format "table {{.Name}}\t{{.Container}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.NetIO}}\t{{.BlockIO}}"
-}
-
-function gcl() {
-	git clone git@github.com:taxibeat/$1.git
-}
-
-if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
-fi
+export PS1="\u \[\033[36m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
 
 export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$GOPATH/bin
