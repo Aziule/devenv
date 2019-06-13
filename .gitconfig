@@ -9,4 +9,4 @@
 	pushcurrent = !git push origin `git current`
 	pullcurrent = !git pull origin `git current`
 [core]
-        excludesfile = /Users/williamclaude/.gitignore_global
+        excludesfile = ~/.gitignore_global
