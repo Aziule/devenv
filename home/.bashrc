@@ -1,4 +1,4 @@
-[[ -s "$HOME/.bashrc_secure" ]] && source "$HOME/.bashrc_secure"
+[[ -s "$HOME/.bashrc_private" ]] && source "$HOME/.bashrc_private"
 
 function parse_git_branch() {
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
